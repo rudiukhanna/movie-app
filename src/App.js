@@ -1,3 +1,4 @@
+import { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Navbar, Container, Nav } from "react-bootstrap";
 import MovieBox from "./components/MovieBox";
@@ -11,7 +12,30 @@ const API_SEARCH = `${BASE_URL}search/movie?${API_KEY}`;
 const API_YEAR = `${BASE_URL}discover/movie?${API_KEY}`;
 
 function App() {
-  
+  const [movies, setMovies]=useState([]);
+  const [query, setQuery]=useState('');
+  const [isLoading, setIsLoading] = useState(true);
+
+  const searchMovie = async(e)=>{
+    e.preventDefault();
+    console.log("Searching");
+    try{
+      const url=`${API_SEARCH}&query=${query}`;
+      const res= await fetch(url);
+      const data= await res.json();
+      console.log(data);
+      setMovies(data.results);
+    }
+    catch(e){
+      console.log(e);
+    }
+  }
+
+  const changeHandler=(e)=>{
+    setQuery(e.target.value);
+  }
+
+
 
 
   return (
@@ -37,6 +61,22 @@ function App() {
                 className="me-auto my-2 my-lg-3"
                 style={{maxHeight:"100px"}}
                 navbarScroll></Nav>
+            <Form className="d-flex" onSubmit={searchMovie} autoComplete="off">
+              <FormControl
+                        type="search"
+                        placeholder="Title..."
+                        className="me-2"
+                        aria-label="search"
+                        name="query"
+                        value={query} onChange={changeHandler}>
+              </FormControl>
+                 <Button 
+                        variant="secondary" 
+                        type="submit" 
+                        className="me-2">
+                          Search
+                  </Button>
+              </Form>
           </Navbar.Collapse>
         </Container>
       </Navbar>
