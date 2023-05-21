@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Navbar, Container, Nav, Form, FormControl, Button } from "react-bootstrap";
 import MovieBox from "./components/MovieBox";
+import Favorites from "./components/Favorites";
 import Footer from "./components/Footer";
 
 
