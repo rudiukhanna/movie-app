@@ -1,5 +1,6 @@
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Navbar, Container, Nav } from "react-bootstrap";
+import MovieBox from "./components/MovieBox";
 import Footer from "./components/Footer";
 
 
@@ -39,7 +40,24 @@ function App() {
           </Navbar.Collapse>
         </Container>
       </Navbar>
-      
+      <div className='movies'>
+      {isLoading ? (
+        <div className="loader">Loading...</div>
+      ) : movies.length > 0 ?(
+        <div className="container">
+        <div className="grid">
+          {movies.map((movieReq)=>
+          <MovieBox 
+                    key={movieReq.id} {...movieReq}
+                    movies={movies}
+                    addToFavorites={addToFavorites}
+                    />)}
+            </div>
+    </div>
+      ):(
+        <h2 className="text-warning text-center mb-0"> No movies found </h2>
+      )}
+    </div> 
       <Footer/>
     </>
   );
