@@ -7,7 +7,6 @@ import Favorites from "./components/Favorites";
 import Genre from "./components/Genre";
 import ThemeToggle from "./components/ThemeToggle";
 import Footer from "./components/Footer";
-import { render, fireEvent } from '@testing-library/react';
 
 
 const BASE_URL = "https://api.themoviedb.org/3/";
