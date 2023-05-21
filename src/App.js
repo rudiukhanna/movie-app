@@ -10,6 +10,9 @@ const API_SEARCH = `${BASE_URL}search/movie?${API_KEY}`;
 const API_YEAR = `${BASE_URL}discover/movie?${API_KEY}`;
 
 function App() {
+  
+
+
   return (
     <>
       <Navbar className="navbar" expand="lg" variant="dark">
