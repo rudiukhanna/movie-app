@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Navbar, Container, Nav } from "react-bootstrap";
+import { Navbar, Container, Nav, Form, FormControl, Button } from "react-bootstrap";
 import MovieBox from "./components/MovieBox";
 import Footer from "./components/Footer";
 
@@ -15,6 +15,7 @@ function App() {
   const [movies, setMovies]=useState([]);
   const [query, setQuery]=useState('');
   const [isLoading, setIsLoading] = useState(true);
+  const [year, setYear] = useState('');
 
   const searchMovie = async(e)=>{
     e.preventDefault();
@@ -34,6 +35,25 @@ function App() {
   const changeHandler=(e)=>{
     setQuery(e.target.value);
   }
+
+  const searchMovieByYear = async(e)=>{
+    e.preventDefault();
+    console.log("Searching Year...");
+    try{
+      const url=`${API_YEAR}&year=${year}`;
+      const res= await fetch(url);
+      const data= await res.json();
+      console.log(data);
+      setMovies(data.results);
+    }
+    catch(e){
+      console.log(e);
+    }
+  }
+
+  const yearChangeHandler = (e) => {
+    setYear(e.target.value);
+  };
 
 
 
@@ -61,14 +81,18 @@ function App() {
                 className="me-auto my-2 my-lg-3"
                 style={{maxHeight:"100px"}}
                 navbarScroll></Nav>
-            <Form className="d-flex" onSubmit={searchMovie} autoComplete="off">
+            <Form 
+                  className="d-flex" 
+                  onSubmit={searchMovie} 
+                  autoComplete="off">
               <FormControl
                         type="search"
                         placeholder="Title..."
                         className="me-2"
                         aria-label="search"
                         name="query"
-                        value={query} onChange={changeHandler}>
+                        value={query} 
+                        onChange={changeHandler}>
               </FormControl>
                  <Button 
                         variant="secondary" 
@@ -77,6 +101,23 @@ function App() {
                           Search
                   </Button>
               </Form>
+              <Form 
+                    className="d-flex"
+                    onSubmit={searchMovieByYear} 
+                    autoComplete="off">
+              <FormControl
+                          type="search"
+                          placeholder="Year..."
+                          className="me-2"
+                          aria-label="search"
+                          name="year"
+                          value={year} 
+                          onChange={yearChangeHandler}> 
+              </FormControl>
+              <Button variant="secondary" 
+                      type="submit">
+                        Search</Button>
+            </Form>
           </Navbar.Collapse>
         </Container>
       </Navbar>
