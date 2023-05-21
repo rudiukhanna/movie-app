@@ -3,6 +3,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import { Navbar, Container, Nav, Form, FormControl, Button } from "react-bootstrap";
 import MovieBox from "./components/MovieBox";
 import Favorites from "./components/Favorites";
+import Genre from "./components/Genre";
 import Footer from "./components/Footer";
 
 
@@ -14,9 +15,12 @@ const API_YEAR = `${BASE_URL}discover/movie?${API_KEY}`;
 
 function App() {
   const [movies, setMovies]=useState([]);
+  const [selectedGenres, setSelectedGenres] = useState([]);
   const [query, setQuery]=useState('');
   const [isLoading, setIsLoading] = useState(true);
   const [year, setYear] = useState('');
+  const [favorites, setFavorites] = useState([]);
+  const [isFavorite, setIsFavorite] = useState(false);
 
   const searchMovie = async(e)=>{
     e.preventDefault();
@@ -55,6 +59,61 @@ function App() {
   const yearChangeHandler = (e) => {
     setYear(e.target.value);
   };
+
+  const addToFavorites = (movie) => {
+    console.log(movie.id)
+    setIsFavorite(true);
+    setFavorites((prevFavorites) => {
+      const newFavorites = [...prevFavorites, movie];
+      localStorage.setItem("favorites", JSON.stringify(newFavorites));
+      return newFavorites;
+    });
+  };
+
+  const removeFromFavorites = (id) => {
+    console.log(id);
+    setFavorites((prevFavorites) => {
+      console.log(prevFavorites)
+      const newFavorites = prevFavorites.filter((movie) => movie.id !== id );
+      localStorage.setItem("favorites", JSON.stringify(newFavorites)); 
+      return newFavorites;
+      
+    });
+
+    useEffect(() => {
+      getMovies();
+    }, [selectedGenres]);
+  
+    const handleGenreSelect = (genreId) => {
+      if (selectedGenres.includes(genreId)) {
+        setSelectedGenres(selectedGenres.filter((id) => id !== genreId));
+      } else {
+        setSelectedGenres([...selectedGenres, genreId]);
+      }
+    };
+  
+    const highlightSelection = (genreId) => {
+      return selectedGenres.includes(genreId) ? 'highlight' : '';
+    };
+  
+    const getMovies = async () => {
+      setIsLoading(true);
+      const response = await fetch(`${API_URL}&with_genres=${selectedGenres.join(',')}`);
+      const data = await response.json();
+      setMovies(data.results);
+      setIsLoading(false);
+    };
+   
+  };
+
+  useEffect(() => {
+    fetch(API_URL)
+    .then((res)=>res.json())
+    .then(data=>{
+      console.log(data);
+      setMovies(data.results);
+    })
+  }, [])
 
 
 
@@ -122,6 +181,7 @@ function App() {
           </Navbar.Collapse>
         </Container>
       </Navbar>
+      <div className="movie-app">
       <div className='movies'>
       {isLoading ? (
         <div className="loader">Loading...</div>
@@ -140,6 +200,15 @@ function App() {
         <h2 className="text-warning text-center mb-0"> No movies found </h2>
       )}
     </div> 
+    <section className="movie-app-sidebar">
+    <Genre
+        genres={genres}
+        highlightSelection={highlightSelection}
+        handleGenreSelect={handleGenreSelect}
+      />
+     <Favorites favorites={favorites} onRemove={removeFromFavorites} />
+    </section>
+    </div>
       <Footer/>
     </>
   );
