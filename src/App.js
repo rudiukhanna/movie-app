@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "../src/styles/styles.css";
 import { Navbar, Container, Nav, Form, FormControl, Button } from "react-bootstrap";
 import MovieBox from "./components/MovieBox";
 import Favorites from "./components/Favorites";
@@ -97,50 +98,23 @@ function App() {
   const [movies, setMovies]=useState([]);
   const [selectedGenres, setSelectedGenres] = useState([]);
   const [query, setQuery]=useState('');
-  const [isLoading, setIsLoading] = useState(true);
-  const [year, setYear] = useState('');
   const [favorites, setFavorites] = useState([]);
   const [isFavorite, setIsFavorite] = useState(false);
+  const [year, setYear] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
   const storedTheme = localStorage.getItem('theme');
   const [isDarkMode, setIsDarkMode] = useState(storedTheme === 'dark');
 
-  const searchMovie = async(e)=>{
-    e.preventDefault();
-    console.log("Searching");
-    try{
-      const url=`${API_SEARCH}&query=${query}`;
-      const res= await fetch(url);
-      const data= await res.json();
-      console.log(data);
-      setMovies(data.results);
-    }
-    catch(e){
-      console.log(e);
-    }
-  }
-
-  const changeHandler=(e)=>{
-    setQuery(e.target.value);
-  }
-
-  const searchMovieByYear = async(e)=>{
-    e.preventDefault();
-    console.log("Searching Year...");
-    try{
-      const url=`${API_YEAR}&year=${year}`;
-      const res= await fetch(url);
-      const data= await res.json();
-      console.log(data);
-      setMovies(data.results);
-    }
-    catch(e){
-      console.log(e);
-    }
-  }
-
-  const yearChangeHandler = (e) => {
-    setYear(e.target.value);
+  const toggleTheme = () => {
+    const newTheme = !isDarkMode ? 'dark' : 'light';
+    setIsDarkMode(!isDarkMode);
+    localStorage.setItem('theme', newTheme);
   };
+
+  useEffect(() => {
+    document.body.classList.toggle('dark-theme', isDarkMode);
+    document.body.classList.toggle('light-theme', !isDarkMode);
+  }, [isDarkMode]);
 
   useEffect(() => {
     const storedFavorites = JSON.parse(localStorage.getItem("favorites")); 
@@ -168,31 +142,31 @@ function App() {
       return newFavorites;
       
     });
-
-    useEffect(() => {
-      getMovies();
-    }, [selectedGenres]);
-  
-    const handleGenreSelect = (genreId) => {
-      if (selectedGenres.includes(genreId)) {
-        setSelectedGenres(selectedGenres.filter((id) => id !== genreId));
-      } else {
-        setSelectedGenres([...selectedGenres, genreId]);
-      }
-    };
-  
-    const highlightSelection = (genreId) => {
-      return selectedGenres.includes(genreId) ? 'highlight' : '';
-    };
-  
-    const getMovies = async () => {
-      setIsLoading(true);
-      const response = await fetch(`${API_URL}&with_genres=${selectedGenres.join(',')}`);
-      const data = await response.json();
-      setMovies(data.results);
-      setIsLoading(false);
-    };
    
+  };
+
+  useEffect(() => {
+    getMovies();
+  }, [selectedGenres]);
+
+  const handleGenreSelect = (genreId) => {
+    if (selectedGenres.includes(genreId)) {
+      setSelectedGenres(selectedGenres.filter((id) => id !== genreId));
+    } else {
+      setSelectedGenres([...selectedGenres, genreId]);
+    }
+  };
+
+  const highlightSelection = (genreId) => {
+    return selectedGenres.includes(genreId) ? 'highlight' : '';
+  };
+
+  const getMovies = async () => {
+    setIsLoading(true);
+    const response = await fetch(`${API_URL}&with_genres=${selectedGenres.join(',')}`);
+    const data = await response.json();
+    setMovies(data.results);
+    setIsLoading(false);
   };
 
   useEffect(() => {
@@ -204,19 +178,53 @@ function App() {
     })
   }, [])
 
-  const toggleTheme = () => {
-    const newTheme = !isDarkMode ? 'dark' : 'light';
-    setIsDarkMode(!isDarkMode);
-    localStorage.setItem('theme', newTheme);
+
+  const searchMovieByYear = async(e)=>{
+    e.preventDefault();
+    console.log("Searching Year...");
+    try{
+      const url=`${API_YEAR}&year=${year}`;
+      const res= await fetch(url);
+      const data= await res.json();
+      console.log(data);
+      setMovies(data.results);
+    }
+    catch(e){
+      console.log(e);
+    }
+  }
+
+  const yearChangeHandler = (e) => {
+    setYear(e.target.value);
   };
 
   useEffect(() => {
-    document.body.classList.toggle('dark-theme', isDarkMode);
-    document.body.classList.toggle('light-theme', !isDarkMode);
-  }, [isDarkMode]);
+    fetch(API_URL)
+    .then((res)=>res.json())
+    .then(data=>{
+      console.log(data);
+      setMovies(data.results);
+    })
+  }, [])
 
+  const searchMovie = async(e)=>{
+    e.preventDefault();
+    console.log("Searching");
+    try{
+      const url=`${API_SEARCH}&query=${query}`;
+      const res= await fetch(url);
+      const data= await res.json();
+      console.log(data);
+      setMovies(data.results);
+    }
+    catch(e){
+      console.log(e);
+    }
+  }
 
-
+  const changeHandler=(e)=>{
+    setQuery(e.target.value);
+  }
 
   return (
     <>
