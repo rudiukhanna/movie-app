@@ -4,6 +4,7 @@ import { Navbar, Container, Nav, Form, FormControl, Button } from "react-bootstr
 import MovieBox from "./components/MovieBox";
 import Favorites from "./components/Favorites";
 import Genre from "./components/Genre";
+import ThemeToggle from "./components/ThemeToggle";
 import Footer from "./components/Footer";
 
 
@@ -21,6 +22,8 @@ function App() {
   const [year, setYear] = useState('');
   const [favorites, setFavorites] = useState([]);
   const [isFavorite, setIsFavorite] = useState(false);
+  const storedTheme = localStorage.getItem('theme');
+  const [isDarkMode, setIsDarkMode] = useState(storedTheme === 'dark');
 
   const searchMovie = async(e)=>{
     e.preventDefault();
@@ -115,6 +118,17 @@ function App() {
     })
   }, [])
 
+  const toggleTheme = () => {
+    const newTheme = !isDarkMode ? 'dark' : 'light';
+    setIsDarkMode(!isDarkMode);
+    localStorage.setItem('theme', newTheme);
+  };
+
+  useEffect(() => {
+    document.body.classList.toggle('dark-theme', isDarkMode);
+    document.body.classList.toggle('light-theme', !isDarkMode);
+  }, [isDarkMode]);
+
 
 
 
@@ -179,6 +193,9 @@ function App() {
                         Search</Button>
             </Form>
           </Navbar.Collapse>
+          <ThemeToggle 
+                        toggleTheme={toggleTheme} 
+                        isDarkMode={isDarkMode} />
         </Container>
       </Navbar>
       <div className="movie-app">
