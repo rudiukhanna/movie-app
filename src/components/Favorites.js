@@ -3,7 +3,7 @@ import { API_IMG } from './MovieBox.js';
 function Favorites({ favorites, onRemove }) {
 
     return (
-        <section className='favourites'>
+        <aside className="favourites col-sm-6 col-md-12">
         <div className="container pt-4">
           <h2 className="favourites_title fw-bold">My Favourites</h2>
               <div className="favourites_grid">     
@@ -24,7 +24,7 @@ function Favorites({ favorites, onRemove }) {
                ))}
             </div>
           </div>
-      </section>
+      </aside>
     );
  }
 

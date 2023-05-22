@@ -46,11 +46,6 @@ body {
   font-weight: var(--font-weight-regular);
 }
 
-.movie-app {
-  display: flex;
-  min-height: 100vh;
-}
-
 .switch {
   position: relative;
   display: inline-block;
@@ -127,7 +122,6 @@ a:hover {
 }
 
 .genres {
-  max-width: 315px;
   padding: 30px 15px;
   background-color: var(--accent-color);
   background-image: var(--bs-gradient);
@@ -213,7 +207,6 @@ a:hover {
 }
 
 .favourites {
-  max-width: 315px;
   background-color: var(--accent-color);
   background-image: var(--bs-gradient);
 }

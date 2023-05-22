@@ -293,7 +293,8 @@ function App() {
         </Container>
       </Navbar>
       <div className="movie-app">
-      <div className='movies'>
+        <div className="row">
+      <div className="movies col-md-8 col-lg-9">
       {isLoading ? (
         <div className="loader">Loading...</div>
       ) : movies.length > 0 ?(
@@ -311,14 +312,17 @@ function App() {
         <h2 className="text-warning text-center mb-0"> No movies found </h2>
       )}
     </div> 
-    <section className="movie-app-sidebar">
+    <section className="movie-app-sidebar col-md-4 col-lg-3">
+      <div className="row">
     <Genre
         genres={genres}
         highlightSelection={highlightSelection}
         handleGenreSelect={handleGenreSelect}
       />
      <Favorites favorites={favorites} onRemove={removeFromFavorites} />
+     </div>
     </section>
+    </div>
     </div>
       <Footer/>
     </>

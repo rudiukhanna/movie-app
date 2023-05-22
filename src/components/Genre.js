@@ -1,6 +1,6 @@
 function Genre ({ genres, highlightSelection, handleGenreSelect }) {
     return (
-        <section className="genres">
+        <aside className="genres col-sm-6 col-md-12">
         <h2 className="genres_title">Genre</h2>
             <div  className="genres_tags">
               {genres.map((genre) => (
@@ -13,7 +13,7 @@ function Genre ({ genres, highlightSelection, handleGenreSelect }) {
                 </div>
               ))}
             </div>
-        </section>
+        </aside>
     );
 }
 

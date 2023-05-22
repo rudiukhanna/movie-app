@@ -17,11 +17,6 @@ body {
     }
 }
 
-.movie-app {
-    display: flex;
-    min-height: 100vh;
-}
-
 .switch {
     position: relative;
     display: inline-block;
@@ -99,7 +94,6 @@ a {
   }
 
 .genres {
-    max-width: 315px;
     padding: 30px 15px;
     background-color: var(--accent-color);
     background-image: var(--bs-gradient);
@@ -197,7 +191,6 @@ a {
 }
 
 .favourites {
-    max-width: 315px;
     background-color: var(--accent-color);
     background-image: var(--bs-gradient);
 
