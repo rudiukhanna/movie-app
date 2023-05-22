@@ -251,4 +251,21 @@ a:hover {
   display: flex;
   gap: 5px;
   align-items: center;
+}
+
+@media screen and (min-width: 320px) and (max-width: 539px) {
+  .grid {
+    display: grid;
+    margin-left: 0.5px;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 0.5em;
+  }
+}
+@media screen and (min-width: 540px) and (max-width: 767px) {
+  .grid {
+    display: grid;
+    margin-left: 0.5px;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 0.5em;
+  }
 }/*# sourceMappingURL=styles.css.map */
