@@ -21,7 +21,7 @@ function MovieBox({title, poster_path, vote_average, release_date, overview, add
             <div className="card-body p-0">
               <img className="card-img-top" src={poster_path? API_IMG+poster_path: "http://via.placeholder.com/1080x1580"} alt={title} />
               <div className="card-body">
-                  <button type="button" className="btn btn-outline-danger" onClick={handleShow} >View More</button>
+                  <button type="button" className="btn btn-outline-danger btn-sm" onClick={handleShow}>View More</button>
                   <Modal show={show} onHide={handleClose}>
                       <Modal.Header closeButton>
                         <Modal.Title></Modal.Title>
