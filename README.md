@@ -8,5 +8,6 @@ Movie-app - це додаток, створений за допомогою фр
           cd movie-app npm start 
     або   
           cd movie-app yarn start
+
 Додаток створений як фінальний проєкт з курсу Front-End Development школи robot_dreams, для закріплення надбаних знань та навичок в галузі html, css та js, і фреймворку React.
 
