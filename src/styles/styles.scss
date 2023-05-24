@@ -219,6 +219,16 @@ a {
     }
 }
 
+.aboutpage {
+    padding: 60px;
+    background-color: var(--primary-color);
+    color: var(--secondary-color);
+
+    &_title {
+        text-align: center;
+    }
+}
+
 .footer {
     width: 100%;
     height: 50px;
