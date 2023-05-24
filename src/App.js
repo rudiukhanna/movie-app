@@ -9,6 +9,8 @@ import ThemeToggle from "./components/ThemeToggle";
 import Footer from "./components/Footer";
 
 
+
+
 const BASE_URL = "https://api.themoviedb.org/3/";
 const API_KEY = "api_key=c28f2b3a5f12a97c881515e0374f688c";
 const API_URL = `${BASE_URL}movie/popular?${API_KEY}`;
@@ -231,7 +233,7 @@ function App() {
       <Navbar className="navbar" expand="lg" variant="dark">
         <Container fluid>
           <Navbar.Brand
-                        href="/home"
+                        href="/"
                         className="link d-flex align-items-center fs-1">
                            <svg xmlns="http://www.w3.org/2000/svg"
                                 width="30"
@@ -324,7 +326,7 @@ function App() {
     </section>
     </div>
     </div>
-      <Footer/>
+      <Footer />
     </>
   );
 }

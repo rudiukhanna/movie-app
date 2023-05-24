@@ -46,6 +46,10 @@ body {
   font-weight: var(--font-weight-regular);
 }
 
+li {
+  list-style-type: none;
+}
+
 .switch {
   position: relative;
   display: inline-block;
@@ -227,6 +231,9 @@ a:hover {
   height: 50px;
   border-top: 1px solid var(--search-field-color);
   background-color: var(--primary-color);
+}
+.footer .link-about {
+  color: var(--footer-content-color);
 }
 .footer_wrapper {
   padding-top: 10px;

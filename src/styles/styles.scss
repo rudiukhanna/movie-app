@@ -17,6 +17,10 @@ body {
     }
 }
 
+li {
+    list-style-type: none;
+}
+
 .switch {
     position: relative;
     display: inline-block;
@@ -214,6 +218,10 @@ a {
     height: 50px;
     border-top: 1px solid var(--search-field-color);
     background-color: var(--primary-color);
+
+    .link-about {
+        color: var(--footer-content-color);
+    }
 
 
      &_wrapper {
