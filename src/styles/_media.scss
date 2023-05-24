@@ -1,3 +1,38 @@
+
+.link {
+    @media screen and (min-width: 320px) and (max-width: 539px) {
+        font: {
+            size: 18px;
+        }
+    }
+
+    @media screen and (min-width: 540px) and (max-width: 767px) {
+        font: {
+            size: 24px;
+        }
+    }
+
+    @media screen and (min-width: 768px) and (max-width: 1920px) {
+        font: {
+            size: 32px;
+        }
+    }
+}
+
+.switch {
+    @media screen and (min-width: 320px) and (max-width: 539px) {
+        width: 50px;
+        height: 20px;
+    }
+}
+
+.slider::before {
+    @media screen and (min-width: 320px) and (max-width: 539px) {
+        width: 15px;
+        height: 15px;
+    }
+}
+
 .grid {
     @media screen and (min-width: 320px) and (max-width: 539px) {
         display: grid;
@@ -13,3 +48,4 @@
         grid-gap: 0.5em;
     }
 }
+

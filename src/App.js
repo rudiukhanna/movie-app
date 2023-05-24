@@ -234,7 +234,7 @@ function App() {
         <Container fluid>
           <Navbar.Brand
                         href="/"
-                        className="link d-flex align-items-center fs-1">
+                        className="link d-flex align-items-center">
                            <svg xmlns="http://www.w3.org/2000/svg"
                                 width="30"
                                 height="30"

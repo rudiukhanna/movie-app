@@ -251,7 +251,6 @@ a:hover {
   padding-top: 10px;
   display: flex;
   justify-content: space-between;
-  align-items: center;
 }
 .footer_wrapper_copyright, .footer_wrapper_link, .footer_wrapper_aboutpage {
   text-decoration: none;
@@ -270,6 +269,36 @@ a:hover {
   display: flex;
   gap: 5px;
   align-items: center;
+}
+
+@media screen and (min-width: 320px) and (max-width: 539px) {
+  .link {
+    font-size: 18px;
+  }
+}
+@media screen and (min-width: 540px) and (max-width: 767px) {
+  .link {
+    font-size: 24px;
+  }
+}
+@media screen and (min-width: 768px) and (max-width: 1920px) {
+  .link {
+    font-size: 32px;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 539px) {
+  .switch {
+    width: 50px;
+    height: 20px;
+  }
+}
+
+@media screen and (min-width: 320px) and (max-width: 539px) {
+  .slider::before {
+    width: 15px;
+    height: 15px;
+  }
 }
 
 @media screen and (min-width: 320px) and (max-width: 539px) {
