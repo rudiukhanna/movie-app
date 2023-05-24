@@ -45,9 +45,11 @@ function AboutPage() {
                         isDarkMode={isDarkMode} />
                          </Container>
       </Navbar>
+         <div className="aboutpage">
             <h1>Про додаток</h1>
             <p>lorem ipsum</p>
             <Footer />
+         </div>
         </div>
     )
 }
