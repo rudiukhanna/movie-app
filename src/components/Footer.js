@@ -13,7 +13,7 @@ function Footer() {
                        className="footer_wrapper_copyright">r_d school 2023</a>
                     </li>
                     <li>
-                        <Link to="/about">Про додаток</Link>
+                        <Link to="/about" className="footer_wrapper_aboutpage">Про додаток</Link>
                     </li>
                     <li>
                         <a  href="https://github.com/rudiukhanna/movie-app" 

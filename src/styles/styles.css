@@ -103,6 +103,12 @@ input:checked + .slider:before {
   background: var(--primary-color);
   background-image: var(--bs-gradient);
 }
+.navbar .link {
+  color: var(--footer-content-color);
+}
+.navbar .link:hover {
+  color: var(--hover-color);
+}
 
 a {
   text-decoration: none;
@@ -232,20 +238,17 @@ a:hover {
   border-top: 1px solid var(--search-field-color);
   background-color: var(--primary-color);
 }
-.footer .link-about {
-  color: var(--footer-content-color);
-}
 .footer_wrapper {
   padding-top: 10px;
   display: flex;
   justify-content: space-between;
   align-items: center;
 }
-.footer_wrapper_copyright, .footer_wrapper_link {
+.footer_wrapper_copyright, .footer_wrapper_link, .footer_wrapper_aboutpage {
   text-decoration: none;
   color: var(--footer-content-color);
 }
-.footer_wrapper_copyright:hover, .footer_wrapper_link:hover {
+.footer_wrapper_copyright:hover, .footer_wrapper_link:hover, .footer_wrapper_aboutpage:hover {
   text-decoration: none;
   color: var(--hover-color);
   opacity: 1;

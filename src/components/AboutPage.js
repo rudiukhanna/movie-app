@@ -1,6 +1,7 @@
 import { Navbar, Nav, Container } from "react-bootstrap";
 import ThemeToggle from "./ThemeToggle";
 import Footer from "./Footer";
+import "../styles/styles.css";
 import { useState, useEffect } from "react";
 
 function AboutPage() {

@@ -74,6 +74,12 @@ li {
     background: var(--primary-color);
     background-image: var(--bs-gradient);
      
+    .link {
+        color: var(--footer-content-color);
+        &:hover {
+           color: var(--hover-color);
+        }
+    }
 }
 
 a {
@@ -219,10 +225,6 @@ a {
     border-top: 1px solid var(--search-field-color);
     background-color: var(--primary-color);
 
-    .link-about {
-        color: var(--footer-content-color);
-    }
-
 
      &_wrapper {
         padding-top: 10px;
@@ -231,13 +233,15 @@ a {
         align-items: center;
 
         &_copyright,
-        &_link {
+        &_link,
+        &_aboutpage {
             text-decoration: none;
             color: var(--footer-content-color);
         }
  
         &_copyright:hover,
-        &_link:hover {
+        &_link:hover,
+        &_aboutpage:hover {
             text-decoration: none;
             color: var(--hover-color);
             opacity: 1;
