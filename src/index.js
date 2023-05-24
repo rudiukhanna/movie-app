@@ -13,7 +13,7 @@ import AboutPage from './components/AboutPage';
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/home",
     element: <App />,
   },
   {
