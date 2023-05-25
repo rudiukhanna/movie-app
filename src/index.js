@@ -5,6 +5,7 @@ import App from './App';
 import {
   BrowserRouter,
   createBrowserRouter,
+  HashRouter,
   RouterProvider,
 } from "react-router-dom";
 import reportWebVitals from './reportWebVitals';
@@ -24,9 +25,15 @@ const router = createBrowserRouter([
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
- 
-    <RouterProvider router={router} />
+  <React.StrictMode>
+    
+      <RouterProvider router={router}>
+        <HashRouter>
 
+        </HashRouter>
+      </RouterProvider>
+ 
+  </React.StrictMode>
 );
 
 
