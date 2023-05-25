@@ -24,9 +24,9 @@ function Footer() {
                     </li>
                     <li> 
                         {isMobile? (
-                            <Link to="./about" className="footer_wrapper_aboutpage">App</Link>
+                            <Link to="/about" className="footer_wrapper_aboutpage">App</Link>
                         ) : (
-                            <Link to="./about" className="footer_wrapper_aboutpage">Про додаток</Link>
+                            <Link to="/about" className="footer_wrapper_aboutpage">Про додаток</Link>
                         )} 
                     </li>
                     <li>

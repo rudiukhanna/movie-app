@@ -1,14 +1,18 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
+import AboutPage from './components/AboutPage';
 
-import { BrowserRouter as Router } from 'react-router-dom';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 
 ReactDOM.render (
-  <Router>
-    <App/>
-  </Router>
+  <BrowserRouter>
+    <Routes>
+      <Route path="movie-app" element={<App />}/> 
+      <Route path="about" element={<AboutPage />}/>
+      </Routes>
+  </BrowserRouter>
   ,  document.getElementById('root')
 );
 
