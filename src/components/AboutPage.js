@@ -22,7 +22,7 @@ function AboutPage() {
             <Navbar>
              <Container fluid>
              <Navbar.Brand
-                           href="/"
+                           href="/movie-app"
                            className="link d-flex align-items-center fs-1">
                               <svg xmlns="http://www.w3.org/2000/svg"
                                    width="30"

@@ -1,12 +1,14 @@
 import { useState, useEffect } from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "../src/styles/styles.css";
+import { Routes, Route } from "react-router-dom";
 import { Navbar, Container, Nav, Form, FormControl, Button } from "react-bootstrap";
 import MovieBox from "./components/MovieBox";
 import Favorites from "./components/Favorites";
 import Genre from "./components/Genre";
 import ThemeToggle from "./components/ThemeToggle";
 import Footer from "./components/Footer";
+import AboutPage from "./components/AboutPage";
 
 
 
@@ -233,7 +235,7 @@ function App() {
       <Navbar className="navbar" expand="lg" variant="dark">
         <Container fluid>
           <Navbar.Brand
-                        href="/"
+                        href="/movie-app"
                         className="link d-flex align-items-center">
                            <svg xmlns="http://www.w3.org/2000/svg"
                                 width="30"
@@ -326,7 +328,7 @@ function App() {
     </section>
     </div>
     </div>
-      <Footer />
+     <Footer />
     </>
   );
 }
